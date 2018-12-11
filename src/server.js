@@ -33,7 +33,7 @@ function htmlTemplate( reactDom ) {
   <head>
     <meta charset="utf-8">
     <title>Communicatie over Grenzen</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
   </head>
   <body>
     <div id="root">${ reactDom }</div>

@@ -2,6 +2,7 @@ const dev = process.env.NODE_ENV !== "production";
 const path = require( "path" );
 const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 const FriendlyErrorsWebpackPlugin = require( "friendly-errors-webpack-plugin" );
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const plugins = [
     new FriendlyErrorsWebpackPlugin(),
@@ -31,15 +32,25 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: "babel-loader",
             },
+            {
+                test:/\.css$/,
+                use: ExtractTextPlugin.extract(
+                    {
+                      fallback: 'style-loader',
+                      use: ['css-loader']
+                    })
+            }
         ],
     },
     output: {
         path: path.resolve( __dirname, "dist" ),
         filename: "[name].bundle.js",
     },
-    plugins,
+    plugins:[ 
+        new ExtractTextPlugin({filename: 'style.css'})
+      ]
 };
