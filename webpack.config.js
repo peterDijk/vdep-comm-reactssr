@@ -3,9 +3,14 @@ const path = require( "path" );
 const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 const FriendlyErrorsWebpackPlugin = require( "friendly-errors-webpack-plugin" );
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const plugins = [
     new FriendlyErrorsWebpackPlugin(),
+    new ExtractTextPlugin({filename: 'style.css'}),
+    new HtmlWebpackPlugin({   
+        favicon: 'images/favicon.ico'
+    })
 ];
 
 if ( !dev ) {
@@ -43,14 +48,16 @@ module.exports = {
                       fallback: 'style-loader',
                       use: ['css-loader']
                     })
-            }
+            },
+            {
+                test: /\.(jpe?g|png|gif|ico)$/i, 
+                loader: 'file?name=[name].[ext]'
+            },
         ],
     },
     output: {
         path: path.resolve( __dirname, "dist" ),
         filename: "[name].bundle.js",
     },
-    plugins:[ 
-        new ExtractTextPlugin({filename: 'style.css'})
-      ]
+    plugins
 };
