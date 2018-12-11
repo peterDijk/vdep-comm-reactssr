@@ -3,14 +3,15 @@ const path = require( "path" );
 const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 const FriendlyErrorsWebpackPlugin = require( "friendly-errors-webpack-plugin" );
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const plugins = [
     new FriendlyErrorsWebpackPlugin(),
     new ExtractTextPlugin({filename: 'style.css'}),
-    new HtmlWebpackPlugin({   
-        favicon: 'images/favicon.ico'
-    })
+    new CopyWebpackPlugin([
+        // relative path is from src
+        { from: './images/favicon.ico' }, // <- your path to favicon
+      ])
 ];
 
 if ( !dev ) {
