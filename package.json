@@ -9,6 +9,11 @@
     "dev": "webpack --watch --progress & nodemon index.js"
   },
   "dependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "express": "^4.16.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
@@ -16,13 +21,8 @@
     "redux": "^4.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "@babel/preset-env": "^7.2.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
-    "express": "^4.16.4",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "nodemon": "^1.18.8",
     "webpack": "^4.27.1",
