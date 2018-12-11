@@ -49,11 +49,7 @@ module.exports = {
                       fallback: 'style-loader',
                       use: ['css-loader']
                     })
-            },
-            {
-                test: /\.(jpe?g|png|gif|ico)$/i, 
-                loader: 'file?name=[name].[ext]'
-            },
+            }
         ],
     },
     output: {
