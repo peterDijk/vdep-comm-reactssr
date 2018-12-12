@@ -1,0 +1,6 @@
+
+
+// UTILS
+
+export const INITIALIZE = 'INITIALIZE'
+export const INITIALIZE_FAILED = 'INITIALIZE_FAILED'

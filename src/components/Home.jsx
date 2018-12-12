@@ -5,7 +5,7 @@ function Home(props) {
     return (
       <main>
         <section className="section-intro">
-          <div className="u-center-text u-margin-bottom-big">
+          <div className="u-center-text u-margin-bottom-medium">
             <h2 class="heading-secondairy">
               Introductie header titel
             </h2>
