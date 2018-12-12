@@ -4,6 +4,7 @@
 - react
 - react-router
 - redux-saga
+- react-helmet
 - webpack
 - babel
 - node-sass

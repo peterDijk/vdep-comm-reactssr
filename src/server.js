@@ -1,29 +1,32 @@
-import express from "express";
-import path from "path";
+import express from "express"
+import path from "path"
 
-import * as React from "react";
-import { renderToString } from "react-dom/server";
+import * as React from "react"
+import { renderToString } from "react-dom/server"
+import { StaticRouter, matchPath } from 'react-router-dom'
 
-import App from "./App";
+import App from "./App"
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const app = express()
+const PORT = process.env.PORT || 3000
 
-app.use( express.static( path.resolve( __dirname, "../dist" ) ) );
+app.use( express.static( path.resolve( __dirname, "../dist" ) ) )
 
 app.get( "/*", (req, res) => {
-  
+  const context = { }
   const jsx = (
-    <App />
+    <StaticRouter context={ context } location={ req.url }>
+      <App />
+    </StaticRouter>
   );
-  const reactDom = renderToString( jsx );
+  const reactDom = renderToString( jsx )
 
-  res.writeHead( 200, { "Content-Type": "text/html" } );
-  res.end( htmlTemplate( reactDom ) );
+  res.writeHead( 200, { "Content-Type": "text/html" } )
+  res.end( htmlTemplate( reactDom ) )
 } );
 
 app.listen( PORT, () => {
-  console.log(`server listening on port ${PORT} `);
+  console.log(`server listening on port ${PORT} `)
 })
 
 function htmlTemplate( reactDom ) {
@@ -40,5 +43,5 @@ function htmlTemplate( reactDom ) {
     <script src="./app.bundle.js"></script>
   </body>
   </html>
-  `;
+  `
 }

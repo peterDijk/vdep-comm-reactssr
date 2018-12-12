@@ -11,7 +11,11 @@ const plugins = [
     new ExtractTextPlugin({filename: 'style.css'}),
     new CopyWebpackPlugin([
         // relative path is from src
-        { from: './images/favicon.ico' }, // <- your path to favicon
+        { from: './images/favicon.ico' },
+        { 
+            from: 'images',
+            to: 'images/' 
+        }
       ]),
     new MiniCssExtractPlugin({
         filename: 'style.css',
@@ -31,7 +35,7 @@ module.exports = {
     context: path.join( __dirname, "src" ),
     devtool: dev ? "none" : "source-map",
     entry: {
-        app: "./client.js",
+        app: "./client.jsx",
     },
     resolve: {
         modules: [
@@ -42,9 +46,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.(js|jsx)$/, // taken out ? before $
                 exclude: /(node_modules|bower_components)/,
-                loader: "babel-loader",
+                use: {
+                    loader: "babel-loader"
+                },
+                resolve: {
+                    extensions: [".js", ".jsx"]
+                }
+                
             },
             {
                 test: /\.scss$/,
