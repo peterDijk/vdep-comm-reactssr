@@ -15,7 +15,8 @@ class HeaderContainer extends React.PureComponent {
     ],
     content: {
       headingMain: "Communicatie over Grenzen",
-      headingSub: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta placeat, beatae sunt consectetur in voluptatum."
+      headingSub: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta placeat, beatae sunt consectetur in voluptatum.",
+      bgImgUrl: 'https://images.unsplash.com/photo-1488197047962-b48492212cda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80'
     }
   }
 

@@ -3,7 +3,7 @@ import * as React from 'react'
 function Header(props) {
   const { items } = props
   return (
-    <header className="header">
+    <header className="header" style={{'--bg-img-url': `url(${props.content.bgImgUrl})`}}>
       <nav>
         <ul>
         { items.map(item => {
