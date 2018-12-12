@@ -5,10 +5,10 @@
   background-image: linear-gradient(
     to right bottom, 
     rgba($color-primary-light, 0.2), 
-    rgba($color-primary-dark, 0.4)),
+    rgba($color-primary-dark, 0.9)),
     var(--bg-img-url);
   background-size: cover;
-  background-position: top;
+  background-position: center;
   position: relative;
   --bg-img-url: url(../images/blank10x10.png);
   // clip-path: polygon(0 0, 100% 0, 100% 45vh, 0 100%);
@@ -26,10 +26,15 @@
       animation: moveInRight 0.2s ease-out;
     }
   }
+
+  &__nav {
+    position: fixed;
+    
+  }
   
   &__text-box {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
