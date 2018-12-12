@@ -10,7 +10,7 @@ import rootSaga from './sagas'
 // const store = createStore( window.REDUX_DATA );
 
 ReactDOM.hydrate(
-  <Provider store={store}>
+  <Provider store={store(window.REDUX_DATA)}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
