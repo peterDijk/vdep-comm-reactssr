@@ -11,7 +11,7 @@ import HomeContainer from './components/HomeContainer'
 class App extends React.Component {
 
   componentDidMount() {
-    // this.props.reduxInit()
+    this.props.reduxInit()
   }
 
   render() {

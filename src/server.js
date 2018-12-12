@@ -5,7 +5,7 @@ import * as React from "react"
 import { renderToString } from "react-dom/server"
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import createStore, { sagaMiddleware } from './store'
+import store, { sagaMiddleware } from './store'
 import rootSaga from './sagas'
 import { reduxInit } from './actions/utils'
 
@@ -18,9 +18,9 @@ app.use( express.static( path.resolve( __dirname, "../dist" ) ) )
 
 app.get( "/*", (req, res) => {
   const context = { }
-  const store = createStore()
+  // const store = createStore()
 
-  store.dispatch( reduxInit() )
+  // store.dispatch( reduxInit() )
 
   const jsx = (
     <Provider store={ store }>

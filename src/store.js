@@ -10,4 +10,7 @@ export const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 
-export default ( initialState ) => createStore( reducer, initialState, composeEnhancers(applyMiddleware(sagaMiddleware)) )
+const store = createStore( reducer, composeEnhancers(applyMiddleware(sagaMiddleware)) ) // ( initialState ) => 
+sagaMiddleware.run(rootSaga)
+export default store
+console.log('from store.js')
