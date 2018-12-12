@@ -14,3 +14,18 @@ const store = createStore( reducer, composeEnhancers(applyMiddleware(sagaMiddlew
 sagaMiddleware.run(rootSaga)
 export default store
 console.log('from store.js')
+
+// when i create store as a function (width arg initialState) that returns createStore
+//    - if setup in client.jsx as const store = createStore(window.REDUX_DATA)
+//      redux is at client created with that initial state. So faster visible
+//      but then sagas don't work
+//      applyMiddleware doesn't run > sagaMiddleware.run(rootSaga) gives error
+//      throw new Error('Before running a Saga, you must mount the Saga middleware on          the Store using applyMiddleware');
+
+//      sagaMiddleware has to run somewhere else !! then i have && initialState &&             Sagas working
+
+// when const store = createStore
+//    - in client.jsx import store, and as argument in <Provider store={store}
+//      * sagas work
+
+//      but no redux store created with initial state. So the app needs action creator in componentDidMount and then the api calls have to been done again, to put content data in redux. So site loads slower, because api fetching is done twice: at server, and happens again in client.
