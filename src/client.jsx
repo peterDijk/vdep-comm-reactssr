@@ -10,11 +10,10 @@ import rootSaga from './sagas'
 // const store = createStore( window.REDUX_DATA );
 
 ReactDOM.hydrate(
-  <Provider store={store(window.REDUX_DATA)}>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
    </Provider>
   , document.getElementById('root'));
   // sagaMiddleware.run(rootSaga)
-  console.log('from after running in client.jsx')
