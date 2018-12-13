@@ -7,7 +7,9 @@ import { StaticRouter, matchPath } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import createStore, { sagaMiddleware } from './store'
 import rootSaga from './sagas'
+import { activeSagas } from 'redux-saga'
 import { reduxInit } from './actions/utils'
+import { requestPage } from './actions/page'
 import routes from './routes'
 
 import App from "./App"
@@ -20,10 +22,11 @@ app.use( express.static( path.resolve( __dirname, "../dist" ) ) )
 app.get( "/*", (req, res) => {
   const context = { }
   const store = createStore()
-  sagaMiddleware.run(rootSaga)
+  const rootTask = sagaMiddleware.run(rootSaga)
 
   store.dispatch( reduxInit() )
   // werkt redux content
+  // store.dispatch( requestPage() )
 
   const dataRequirements =
         routes
@@ -32,8 +35,8 @@ app.get( "/*", (req, res) => {
             .filter( comp => comp.serverFetch ) // check if components have data requirement
             .map( comp => store.dispatch( comp.serverFetch( ) ) ); // dispatch data requirement
 
-  Promise.all( dataRequirements ).then( () => { // performance?? the render of content only continues after all serverFetches are resolved
-    
+  Promise.all( [dataRequirements, rootTask] ).then( () => { // performance?? the render of content only continues after all serverFetches are resolved
+
     const jsx = (
       <Provider store={ store }>
         <StaticRouter context={ context } location={ req.url }>
@@ -43,9 +46,12 @@ app.get( "/*", (req, res) => {
     );
     const reactDom = renderToString( jsx )
     const reduxState = store.getState()
-  
+    console.log(reduxState)
     res.writeHead( 200, { "Content-Type": "text/html" } )
     res.end( htmlTemplate( reactDom, reduxState ) )
+
+  
+
   } )
 } );
 

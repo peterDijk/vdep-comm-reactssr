@@ -2,6 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Home from './Home'
 
+import { requestPage } from '../actions/page'
+
 class HomeContainer extends React.PureComponent {
 
 
@@ -17,5 +19,6 @@ class HomeContainer extends React.PureComponent {
 const mapStateToProps = (state) => ({
   page: state.page
 })
+HomeContainer.serverFetch = requestPage
 
 export default connect(mapStateToProps)(HomeContainer)

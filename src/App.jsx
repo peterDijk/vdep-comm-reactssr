@@ -15,7 +15,9 @@ class App extends React.Component {
     if (this.props.utils.initialized !== true) {
       this.props.reduxInit()
     }
-    this.props.requestPage()
+    if (!this.props.page.data.length > 0) {
+      this.props.requestPage()
+    }
 
   }
 
@@ -34,7 +36,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    utils: state.utils
+    utils: state.utils,
+    page: state.page
   }
 }
 
