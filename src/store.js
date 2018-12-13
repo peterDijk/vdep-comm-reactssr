@@ -10,10 +10,9 @@ export const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 
-const store = createStore( reducer, composeEnhancers(applyMiddleware(sagaMiddleware)) ) // ( initialState ) => 
-sagaMiddleware.run(rootSaga)
+const store = ( initialState ) => createStore( reducer, initialState, composeEnhancers(applyMiddleware(sagaMiddleware)) ) // ( initialState ) => 
+
 export default store
-console.log('from store.js')
 
 // when i create store as a function (width arg initialState) that returns createStore
 //    - if setup in client.jsx as const store = createStore(window.REDUX_DATA)
@@ -22,7 +21,8 @@ console.log('from store.js')
 //      applyMiddleware doesn't run > sagaMiddleware.run(rootSaga) gives error
 //      throw new Error('Before running a Saga, you must mount the Saga middleware on          the Store using applyMiddleware');
 
-//      sagaMiddleware has to run somewhere else !! then i have && initialState &&             Sagas working
+//      sagaMiddleware has to run somewhere else !! then i have && initialState &&             Sagas working - SOLVED
+//      sagaMiddleware.run(rootSaga) in client.jsx imm after const store = createStore         (window.reduxdata)
 
 // when const store = createStore
 //    - in client.jsx import store, and as argument in <Provider store={store}
