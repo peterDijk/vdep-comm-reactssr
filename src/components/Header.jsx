@@ -1,9 +1,10 @@
 import * as React from 'react'
+import * as constants from '../constants'
 
 function Header(props) {
-  const { items } = props
+  const { headerNode, imageNode } = props
   return (
-    <header className="header" style={{'--bg-img-url': `url(images/mark-eder-310600-unsplash.jpg)`}}>
+    <header className="header" style={{'--bg-img-url': `url(${ constants.contentDomain }${ imageNode.attributes.uri.url })`}}>
       {/* <nav className="header__nav">
         <ul>
         { items.map(item => {
@@ -19,10 +20,10 @@ function Header(props) {
       <div className="header__text-box">
         <h1>
           <span className="heading-primary heading-primary--main">
-            { props.content.headingMain }
+            { headerNode.attributes.title }
           </span>
           <span className="heading-primary heading-primary--sub">
-            { props.content.headingSub }
+            { headerNode.attributes.field_subtitle }
           </span>
         </h1>
       </div>

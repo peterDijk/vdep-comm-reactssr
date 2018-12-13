@@ -1,0 +1,1 @@
+export const contentDomain = 'https://vdep-comm.pvd.fi'

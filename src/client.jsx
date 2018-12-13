@@ -7,7 +7,7 @@ import App from './App';
 import createStore, { sagaMiddleware } from './store'
 import rootSaga from './sagas'
 
-const store = createStore( window.REDUX_DATA );
+const store = createStore( window.REDUX_DATA )
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.hydrate(

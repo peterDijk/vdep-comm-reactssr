@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import createStore, { sagaMiddleware } from './store'
 import rootSaga from './sagas'
 import { reduxInit } from './actions/utils'
+import routes from './routes'
 
 import App from "./App"
 
@@ -24,18 +25,28 @@ app.get( "/*", (req, res) => {
   store.dispatch( reduxInit() )
   // werkt redux content
 
-  const jsx = (
-    <Provider store={ store }>
-      <StaticRouter context={ context } location={ req.url }>
-        <App />
-      </StaticRouter>
-    </Provider>
-  );
-  const reactDom = renderToString( jsx )
-  const reduxState = store.getState()
+  const dataRequirements =
+        routes
+            .filter( route => matchPath( req.url, route ) ) // filter matching paths
+            .map( route => route.component ) // map to components
+            .filter( comp => comp.serverFetch ) // check if components have data requirement
+            .map( comp => store.dispatch( comp.serverFetch( ) ) ); // dispatch data requirement
 
-  res.writeHead( 200, { "Content-Type": "text/html" } )
-  res.end( htmlTemplate( reactDom, reduxState ) )
+  Promise.all( dataRequirements ).then( () => { // performance?? the render of content only continues after all serverFetches are resolved
+    
+    const jsx = (
+      <Provider store={ store }>
+        <StaticRouter context={ context } location={ req.url }>
+          <App />
+        </StaticRouter>
+      </Provider>
+    );
+    const reactDom = renderToString( jsx )
+    const reduxState = store.getState()
+  
+    res.writeHead( 200, { "Content-Type": "text/html" } )
+    res.end( htmlTemplate( reactDom, reduxState ) )
+  } )
 } );
 
 app.listen( PORT, () => {
