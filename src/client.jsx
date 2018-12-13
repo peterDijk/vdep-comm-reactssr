@@ -4,17 +4,17 @@ import "./sass/main.scss";
 import {Provider} from 'react-redux'
 import {BrowserRouter} from 'react-router-dom'
 import App from './App';
-import store, { sagaMiddleware } from './store'
+import createStore, { sagaMiddleware } from './store'
 import rootSaga from './sagas'
 
-// const store = createStore( window.REDUX_DATA );
+const store = createStore( window.REDUX_DATA );
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.hydrate(
-  <Provider store={store(window.REDUX_DATA)}>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
    </Provider>
   , document.getElementById('root'));
-  // sagaMiddleware.run(rootSaga)
-  console.log('from after running in client.jsx')
+  // 
