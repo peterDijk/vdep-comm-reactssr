@@ -1,17 +1,23 @@
 import * as React from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import routes from './routes'
 import { connect } from 'react-redux'
 import { reduxInit } from './actions/utils'
+import { requestPage } from './actions/page'
 
 import HeaderContainer from './components/HeaderContainer'
-import HomeContainer from './components/HomeContainer'
 
 
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.reduxInit()
+    if (this.props.utils.initialized !== true) {
+      this.props.reduxInit()
+    }
+    if (!this.props.page.data.length > 0) {
+      this.props.requestPage()
+    }
+
   }
 
   render() {
@@ -20,6 +26,7 @@ class App extends React.Component {
         <HeaderContainer />
         <Switch>
           { routes.map(route => <Route key={ route.path } { ...route } />)}
+          
         </Switch>
       </div>
     )
@@ -28,12 +35,14 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    utils: state.utils
+    utils: state.utils,
+    page: state.page
   }
 }
 
 const mapDispatchToProps = {
-  reduxInit
+  reduxInit,
+  requestPage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

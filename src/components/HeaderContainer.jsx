@@ -1,30 +1,21 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
 import Header from './Header'
 
 class HeaderContainer extends React.PureComponent {
-  state = {
-    menuItems: [
-      {
-        name: "Home",
-        path: "/"
-      },
-      {
-        name: "Test",
-        path: "/test"
-      }
-    ],
-    content: {
-      headingMain: "Communicatie over Grenzen",
-      headingSub: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta placeat, beatae sunt consectetur in voluptatum.",
-      bgImgUrl: 'https://images.unsplash.com/photo-1488197047962-b48492212cda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80'
-    }
-  }
 
   render() {
+    if (this.props.page.data.length === 0) return 'Loading'
+    const headerNode = this.props.page.included.filter( incl => incl.type === 'node--header' )
+    const imageNode = this.props.page.included.filter( incl => incl.id === headerNode[0].relationships.field_background_image.data.id )
     return (
-      <Header items={this.state.menuItems} content={this.state.content} />
+      <Header headerNode={ headerNode[0] } imageNode={ imageNode[0] }/>
     )
   }
 }
 
-export default HeaderContainer
+const mapStateToProps = (state) => ({ 
+  page: state.page
+})
+
+export default connect(mapStateToProps)(HeaderContainer)
