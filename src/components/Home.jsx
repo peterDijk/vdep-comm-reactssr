@@ -1,4 +1,5 @@
 import * as React from 'react'
+import ReactHtmlParser from 'react-html-parser'
 
 function Home(props) {
   const { sections } = props
@@ -13,7 +14,7 @@ function Home(props) {
             </h2>
           </div>
           <p className="paragraph u-center-text">
-            { sectionIntro.attributes.body.value }
+            { ReactHtmlParser(sectionIntro.attributes.body.processed) }
           </p>
         </section>
       </main>
