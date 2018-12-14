@@ -1,4 +1,4 @@
-import * as types from '../actions/constants'
+import * as types from '../actions/actionTypes'
 
 const intitialState = {
   data: [],
@@ -8,7 +8,6 @@ const intitialState = {
 export default (state = intitialState, { type, payload }) => {
   switch (type) {
     case types.PAGE_CONTENT_REQUEST_SUCCESS:
-      console.log('reducer succes')
       return payload
     default:
       return state

@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import routes from './routes'
 import { connect } from 'react-redux'
 import { reduxInit } from './actions/utils'
 import { requestPage } from './actions/page'
 
 import HeaderContainer from './components/HeaderContainer'
-import HomeContainer from './components/HomeContainer'
 
 
 class App extends React.Component {

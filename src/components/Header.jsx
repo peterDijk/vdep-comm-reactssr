@@ -4,7 +4,8 @@ import * as constants from '../constants'
 function Header(props) {
   const { headerNode, imageNode } = props
   return (
-    <header className="header" style={{'--bg-img-url': `url(${ constants.contentDomain }${ imageNode.attributes.uri.url })`}}>
+    <header className="header" > 
+    {/* style={{'--bg-img-url': `url(${ constants.contentDomain }${ imageNode.attributes.uri.url })`}} */}
       {/* <nav className="header__nav">
         <ul>
         { items.map(item => {

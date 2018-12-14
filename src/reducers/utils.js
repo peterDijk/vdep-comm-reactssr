@@ -1,4 +1,4 @@
-import * as types from '../actions/constants'
+import * as types from '../actions/actionTypes'
 
 const initialState = {
   initialized: false,

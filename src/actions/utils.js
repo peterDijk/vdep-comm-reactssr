@@ -1,5 +1,10 @@
-import * as types from './constants'
+import * as types from './actionTypes'
 
-export function reduxInit() {
-  return { type: types.INITIALIZE }
+function reduxInitSuccess() {
+  return { type: types.INITIALIZE_SUCCESS }
+}
+
+export const reduxInit = () => (dispatch) => {
+  dispatch({ type: types.INITIALIZE })
+  dispatch( reduxInitSuccess() )
 }
