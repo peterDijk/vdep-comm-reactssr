@@ -22,10 +22,4 @@ function Home(props) {
     )
 }
 
-// function parseHtml(string) {
-//   let parser = new DomParser()
-//   return parser.parseFromString(string, 'text/html')
-
-// }
-
 export default Home
