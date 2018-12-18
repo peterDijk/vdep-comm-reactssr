@@ -5,6 +5,9 @@ import {Provider} from 'react-redux'
 import {BrowserRouter} from 'react-router-dom'
 import App from './App';
 import createStore from './store'
+import { createMemoryHistory } from 'history';
+
+const history = createMemoryHistory();
 
 const store = createStore( window.__INITIAL_STATE__ )
 
@@ -14,4 +17,4 @@ ReactDOM.hydrate(
       <App />
     </BrowserRouter>
    </Provider>
-  , document.getElementById('root'));
+  , document.getElementById('root'))
