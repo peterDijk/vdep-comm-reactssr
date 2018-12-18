@@ -28,7 +28,7 @@ function Section(props) {
             </Button>
           </Link>
         }
-        <Grid container direction="row" justify="center" alignContent="center" spacing={24}>
+        {/* <Grid container direction="row" justify="center" alignContent="center" spacing={24}>
         { props.seminars &&
         props.seminars.data.map(sem => (
           <Grid item key={sem.id}>
@@ -41,7 +41,15 @@ function Section(props) {
         ))
         
         }
-        </Grid>
+        </Grid> */}
+        { props.seminars &&
+        props.seminars.data.map(sem => (
+          <div key={ sem.id } className="feature-box">
+            {sem.attributes.title}
+          </div>
+        ))
+        
+        }
       </section>
   )
 }

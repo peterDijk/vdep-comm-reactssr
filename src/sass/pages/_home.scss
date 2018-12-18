@@ -8,7 +8,14 @@ main {
   background-color: $color-grey-light-1;
   padding: 10rem 0;
   margin-top: -5vh;
-  // position: relative;
+  position: relative;
+  z-index: 0;
+
+  &__seminars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .section-tours {
@@ -16,3 +23,4 @@ main {
   background-color: $color-grey-light-1;
   margin-top: -9rem;
 }
+
