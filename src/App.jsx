@@ -4,14 +4,13 @@ import routes from './routes'
 import { connect } from 'react-redux'
 import { reduxInit } from './actions/utils'
 import { requestPage } from './actions/page'
+import { requestSeminars } from './actions/seminars'
 
 import HeaderContainer from './components/HeaderContainer'
 import HomeContainer from './components/HomeContainer'
 import ReadMoreContainer from './components/ReadMoreContainer'
 import NotFound from './components/NotFound'
-import { createMemoryHistory } from 'history';
 
-const history = createMemoryHistory();
 
 class App extends React.Component {
 
@@ -21,6 +20,7 @@ class App extends React.Component {
     }
     if (!this.props.page.data.length > 0) {
       this.props.requestPage()
+      this.props.requestSeminars()
     }
   }
 
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   reduxInit,
-  requestPage
+  requestPage,
+  requestSeminars
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

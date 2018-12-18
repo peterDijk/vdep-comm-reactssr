@@ -10,17 +10,22 @@ class HomeContainer extends React.PureComponent {
     console.log('test')
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     if (this.props.page.data.length === 0) return 'Loading'
     const sections = this.props.page.included.filter(incl => incl.type === 'node--section')
     return (
-      <Home sections={ sections } testFn={this.testLog}/>
+      <Home sections={ sections } seminars={ this.props.seminars } />
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  page: state.page
+  page: state.page,
+  seminars: state.seminars
 })
 HomeContainer.serverFetch = requestPage
 
