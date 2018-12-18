@@ -7,15 +7,12 @@ import { StaticRouter, matchPath } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import createStore from './store'
 import { reduxInit } from './actions/utils'
-
+import { requestSeminars } from './actions/seminars'
 
 import routes from './routes'
 
 import App from "./App"
 
-import { createMemoryHistory } from 'history';
-
-const history = createMemoryHistory();
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -27,6 +24,7 @@ app.get( "/*", (req, res) => {
   const store = createStore()
 
   store.dispatch( reduxInit() )
+  store.dispatch( requestSeminars() )
   // werkt redux content
 
   const dataRequirements =
