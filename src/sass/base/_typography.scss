@@ -7,6 +7,13 @@ body {
   // font-size: $default-font-size;
 }
 
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 .heading-primary {
   color: $color-white;
   text-transform: uppercase;

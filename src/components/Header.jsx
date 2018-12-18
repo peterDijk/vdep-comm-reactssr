@@ -16,7 +16,7 @@ function Header(props) {
         </ul>
       </nav> */}
       <div className="header__logo-box">
-        <img src="images/vdep-logo.png" alt="Van Dijk E-Projects" className="header__logo"/>
+        <img src="/images/vdep-logo.png" alt="Van Dijk E-Projects" className="header__logo"/>
       </div>
       <div className="header__text-box">
         <h1>

@@ -1,16 +1,28 @@
 import * as React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom'
 import routes from './routes'
 import { connect } from 'react-redux'
 import { reduxInit } from './actions/utils'
 import { requestPage } from './actions/page'
 
 import HeaderContainer from './components/HeaderContainer'
+import HomeContainer from './components/HomeContainer'
+import ReadMoreContainer from './components/ReadMoreContainer'
+import NotFound from './components/NotFound'
+import { createMemoryHistory } from 'history';
 
+const history = createMemoryHistory();
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      history : null
+    }
+  }
 
-  componentDidMount() {
+
+  componentWillMount() {
     if (this.props.utils.initialized !== true) {
       this.props.reduxInit()
     }
@@ -18,16 +30,24 @@ class App extends React.Component {
       this.props.requestPage()
     }
 
+    this.setState({
+      history: createMemoryHistory
+    })
+
   }
 
+  // componentDidUpdate() {
+  //   console.log(this.props.match)
+  // }
+
   render() {
+    // console.log(this.state.history)
     return (
       <div className="App">
         <HeaderContainer />
-        <Switch>
-          { routes.map(route => <Route key={ route.path } { ...route } />)}
-          
-        </Switch>
+            <Switch>
+              { routes.map((route, index) => <Route key={ index } { ...route } />)}
+            </Switch>
       </div>
     )
   }
@@ -45,4 +65,4 @@ const mapDispatchToProps = {
   requestPage
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

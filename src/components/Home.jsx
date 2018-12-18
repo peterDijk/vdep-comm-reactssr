@@ -1,5 +1,8 @@
 import * as React from 'react'
+import { NavLink, Link } from 'react-router-dom'
 import ReactHtmlParser from 'react-html-parser'
+
+import Button from '@material-ui/core/Button'
 
 function Home(props) {
   const { sections } = props
@@ -9,13 +12,23 @@ function Home(props) {
       <main>
         <section className="section-intro">
           <div className="u-center-text u-margin-bottom-medium">
-            <h2 class="heading-secondairy">
+            <h2 className="heading-secondairy">
               { sectionIntro.attributes.title }
             </h2>
           </div>
-          <p className="paragraph u-center-text">
+          <div className="paragraph u-center-text">
             { ReactHtmlParser(sectionIntro.attributes.body.processed) }
-          </p>
+          </div>
+          <Link key={sectionIntro.id} to={`/more/${sectionIntro.attributes.field_slug}`} >
+            <Button variant="contained" className="btn-readmore">
+              Lees meer
+            </Button>
+          </Link>
+          <NavLink to="/test" >
+            <Button variant="contained" className="btn-readmore" onClick={() => props.testFn()}>
+              test
+            </Button>
+          </NavLink>
         </section>
       </main>
       

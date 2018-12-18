@@ -6,12 +6,15 @@ import { requestPage } from '../actions/page'
 
 class HomeContainer extends React.PureComponent {
 
+  testLog = () => {
+    console.log('test')
+  }
 
   render() {
     if (this.props.page.data.length === 0) return 'Loading'
     const sections = this.props.page.included.filter(incl => incl.type === 'node--section')
     return (
-      <Home sections={ sections } />
+      <Home sections={ sections } testFn={this.testLog}/>
     )
   }
 }

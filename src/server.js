@@ -13,6 +13,10 @@ import routes from './routes'
 
 import App from "./App"
 
+import { createMemoryHistory } from 'history';
+
+const history = createMemoryHistory();
+
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -63,14 +67,14 @@ function htmlTemplate( reactDom, reduxState ) {
   <head>
     <meta charset="utf-8">
     <title>Communicatie over Grenzen</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
     <div id="root">${ reactDom }</div>
     <script>
       window.__INITIAL_STATE__ = ${ JSON.stringify( reduxState )}
     </script>
-    <script src="./app.bundle.js"></script>
+    <script src="/app.bundle.js"></script>
   </body>
   </html>
   `
