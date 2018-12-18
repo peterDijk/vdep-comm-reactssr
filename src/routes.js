@@ -14,6 +14,6 @@ export default [
     exact: true
   },
   {
-    component: HomeContainer
+    component: NotFound
   }
 ]

@@ -9,6 +9,7 @@
 html {
   // This defines what 1rem is. 100% is 16px (most of the time).
   font-size: 62.5%; // 10px
+  overflow-y: scroll;
 }
 
 body {
