@@ -17,6 +17,7 @@ class HomeContainer extends React.PureComponent {
   render() {
     if (this.props.page.data.length === 0) return 'Loading'
     const sections = this.props.page.included.filter(incl => incl.type === 'node--section')
+    console.log(sections);
     return (
       <Home sections={ sections } seminars={ this.props.seminars } />
     )
