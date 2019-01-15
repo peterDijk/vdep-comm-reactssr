@@ -59,6 +59,8 @@ a:active {
 .paragraph {
   font-size: $default-font-size;
   padding: 2rem;
+  margin: 0 8vw 0 8vw;
+  // text-align: left;
   
   &:not(:last-child) {
     margin-bottom: 3rem;

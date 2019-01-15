@@ -18,7 +18,7 @@ function Section(props) {
             { section.attributes.title }
           </h2>
         </div>
-        <div className="paragraph u-center-text">
+        <div className="paragraph">
           { ReactHtmlParser(section.attributes.body.processed) }
         </div>
         { !props.seminars && 
@@ -42,14 +42,16 @@ function Section(props) {
         
         }
         </Grid> */}
-        { props.seminars &&
-        props.seminars.data.map(sem => (
-          <div key={ sem.id } className="feature-box">
-            {sem.attributes.title}
-          </div>
-        ))
-        
-        }
+        <div className="section-intro__seminars">
+          { props.seminars &&
+            props.seminars.data.map(sem => (
+              <div key={ sem.id } className="feature-box">
+                {sem.attributes.title}
+              </div>
+          ))
+          
+          }
+        </div>
       </section>
   )
 }

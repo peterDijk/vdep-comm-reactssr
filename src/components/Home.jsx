@@ -9,16 +9,16 @@ import SeminarsContainer from './SeminarsContainer'
 
 function Home(props) {
   const { sections } = props
-  const sectionIntro = sections.filter(sec => sec.attributes.field_slug === 'section-intro')[0]
-  const sectionAbout = sections.filter(sec => sec.attributes.field_slug === 'section-about')[0]
-  const sectionSeminars = sections.filter(sec => sec.attributes.field_slug === 'section-seminars')[0]
+  // const sectionIntro = sections.filter(sec => sec.attributes.field_slug === 'section-intro')[0]
+  // const sectionAbout = sections.filter(sec => sec.attributes.field_slug === 'section-about')[0]
+  // const sectionSeminars = sections.filter(sec => sec.attributes.field_slug === 'section-seminars')[0]
   
     return (
       
       <main>
-        <Section section={ sectionIntro } />
+        {/* <Section section={ sectionIntro } />
         <Section section= { sectionSeminars } seminars={props.seminars}/>
-        <Section section={ sectionAbout } />
+        <Section section={ sectionAbout } /> */}
       </main>
       
     )
