@@ -10,7 +10,8 @@ const seminarsRequestSucces = data => ({
 
 export const requestSeminars = () => async (dispatch, getState) => {
   const now = moment().format("YYYY-MM-DD")
-  const url = `${constants.contentDomain}/cms/jsonapi/node/seminar?filter[laterthennow][condition][path]=field_start_date&filter[laterthennow][condition][operator]=%3E&filter[laterthennow][condition][value]=${now}`
+  const url = `${constants.contentDomain}/cms/jsonapi/node/seminar?filter[laterthennow][condition][path]=field_start_date&filter[laterthennow][condition][operator]=%3E&filter[laterthennow][condition][value]=${now}&include=field_image`
+  // console.log(url);
   try {
     
     const request = await apiRequest(url, 'GET')

@@ -32,7 +32,9 @@ app.get( "/*", (req, res) => {
             .filter( route => matchPath( req.url, route ) ) // filter matching paths
             .map( route => route.component ) // map to components
             .filter( comp => comp.serverFetch ) // check if components have data requirement
-            .map( comp => store.dispatch( comp.serverFetch( ) ) ); // dispatch data requirement
+            .map( comp => {
+              return store.dispatch( comp.serverFetch( ) )
+             } ); // dispatch data requirement
 
   Promise.all( dataRequirements ).then( () => { // performance?? the render of content only continues after all serverFetches are resolved
 

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import { Link } from 'react-router-dom'
+import * as constants from '../constants'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
@@ -43,12 +44,30 @@ function Section(props) {
         }
         </Grid> */}
         <div className="section-intro__seminars">
-          { props.seminars &&
-            props.seminars.data.map(sem => (
+          { (props.seminars &&
+            props.seminars.data) &&
+            props.seminars.data.map(sem => {
+              const imgSrc = props.seminars.included.filter(incl => {
+                if (sem.relationships.field_image.data !== null &&
+                  incl.id === sem.relationships.field_image.data.id) {
+                  return incl
+                }
+              })
+              return (
               <div key={ sem.id } className="feature-box">
-                {sem.attributes.title}
+                <h3>{sem.attributes.title}</h3>
+                <div className="feature-box__image">
+                  {imgSrc.length > 0 &&
+                    <img src={`${constants.contentDomain}${imgSrc[0].attributes.uri.url}`} />
+                  }
+                  <Link key={sem.id} to={`/seminar/${sem.attributes.title}/${sem.id}`} className="btn-readmore">
+                    <Button variant="contained" >
+                      Details
+                    </Button>
+                  </Link>                  
+                </div>
               </div>
-          ))
+          )})
           
           }
         </div>

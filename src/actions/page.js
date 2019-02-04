@@ -1,6 +1,7 @@
 import * as types from './actionTypes'
 import * as constants from '../constants'
 import axios from 'axios'
+import { requestSeminars } from './seminars'
 
 // export const requestPage = (slug) => {
 //   console.log('from requestPage action creator')
