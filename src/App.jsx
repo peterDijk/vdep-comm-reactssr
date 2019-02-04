@@ -19,8 +19,8 @@ class App extends React.Component {
       this.props.reduxInit()
     }
     if (!this.props.page.data.length > 0) {
-      this.props.requestPage()
-      this.props.requestSeminars()
+      // this.props.requestPage()
+      // this.props.requestSeminars()
     }
   }
 

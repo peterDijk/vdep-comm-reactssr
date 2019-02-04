@@ -1,15 +1,16 @@
 .feature-box {
   background-color: rgba($color-white, .8);
-  width: 30rem;
-  height: 40rem;
+  width: 20rem;
+  height: 30rem;
   display: inline-block;
   font-size: 1.5rem;
-  padding: 2.5rem;
+  // padding: 2.5rem;
   text-align: center;
   border-radius: .3rem;
   box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
   transition: transform .3s;
   margin: 3rem;
+  position: relative;
   
 
   &__icon {
@@ -28,5 +29,13 @@
 
   &__text {
 
+  }
+  &__image {
+    height: 20rem;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
   }
 }
