@@ -26,6 +26,7 @@ const SeminarDetails = props => {
       </div>
       <div className="section-details__programma">
         <div className="paragraph">
+          <h2 className="heading-tertiary">Programma</h2>
           {ReactHtmlParser(seminar.attributes.field_programma.processed)}
         </div>
       </div>
