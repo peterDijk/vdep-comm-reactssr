@@ -29,7 +29,7 @@ class App extends React.Component {
       this.props.page.included.filter(
         incl => incl.attributes.field_slug === "section-footer"
       )[0];
-    // console.log(footer);
+    console.log(footer);
     return (
       <div className="App">
         <HeaderContainer location={this.props.location.pathname} />
@@ -38,7 +38,7 @@ class App extends React.Component {
             <Route key={index} {...route} />
           ))}
         </Switch>
-        {/* <Footer footer={footer} /> */}
+        <Footer footer={footer} />
       </div>
     );
   }
