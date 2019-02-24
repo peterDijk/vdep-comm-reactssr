@@ -15,7 +15,7 @@ export default [
     exact: true
   },
   {
-    path: "/seminar/:title/:id",
+    path: "/seminar/:id",
     component: SeminarDetailsContainer,
   },
   {

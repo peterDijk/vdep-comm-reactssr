@@ -14,13 +14,14 @@ import NotFound from './components/NotFound'
 
 class App extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.utils.initialized !== true) {
       this.props.reduxInit()
     }
     if (!this.props.page.data.length > 0) {
-      // this.props.requestPage()
-      // this.props.requestSeminars()
+      console.log('hooooi');
+      this.props.requestPage()
+      this.props.requestSeminars()
     }
   }
 

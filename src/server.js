@@ -19,13 +19,12 @@ const PORT = process.env.PORT || 3000
 
 app.use( express.static( path.resolve( __dirname, "../dist" ) ) )
 
-app.get( "/*", (req, res) => {
+app.get( "/*", async (req, res) => {
   const context = { }
   const store = createStore()
 
   store.dispatch( reduxInit() )
-  store.dispatch( requestSeminars() )
-  // werkt redux content
+  await store.dispatch( requestSeminars() )
 
   const dataRequirements =
         routes
