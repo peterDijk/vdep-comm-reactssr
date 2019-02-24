@@ -38,7 +38,7 @@ class App extends React.Component {
             <Route key={index} {...route} />
           ))}
         </Switch>
-        <Footer footer={footer} />
+        {/* <Footer footer={footer} /> */}
       </div>
     );
   }
