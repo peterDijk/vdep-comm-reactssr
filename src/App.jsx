@@ -26,10 +26,9 @@ class App extends React.Component {
   render() {
     const footer =
       this.props.page.included &&
-      this.props.page.included.filter(
+      this.props.page.included.find(
         incl => incl.attributes.field_slug === "section-footer"
-      )[0];
-    console.log(footer);
+      );
     return (
       <div className="App">
         <HeaderContainer location={this.props.location.pathname} />
