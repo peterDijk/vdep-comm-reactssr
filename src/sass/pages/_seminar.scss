@@ -1,0 +1,60 @@
+main {
+  // position: relative;
+  // top: 0;
+  // left: 0;
+}
+
+.section-details {
+  background-color: $color-grey-light-1;
+  padding: 10rem 0;
+  margin-top: -5vh;
+  position: relative;
+  z-index: 0;
+
+  &__bullet {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+
+    &--image {
+      width: 30rem;
+      height: 25rem;
+
+      img {
+        right: 10rem;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__programma .paragraph {
+    table {
+      border: 0;
+
+      tr {
+        border: 0;
+
+        td {
+          border: 0;
+
+          hr {
+            color: $color-grey-light-1;
+            background-color: $color-grey-light-1;
+            height: 1px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.section-tours {
+  padding: 25rem 0 50rem 0;
+  background-color: $color-grey-light-1;
+  margin-top: -9rem;
+}
