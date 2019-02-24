@@ -3,9 +3,13 @@ import ReadMoreContainer from './components/ReadMoreContainer'
 import SeminarDetailsContainer from './components/SeminarDetailsContainer'
 import NotFound from './components/NotFound';
 
-export default [
-  {
+export default [{
     path: "/",
+    component: HomeContainer,
+    exact: true
+  },
+  {
+    path: "/index.php",
     component: HomeContainer,
     exact: true
   },
