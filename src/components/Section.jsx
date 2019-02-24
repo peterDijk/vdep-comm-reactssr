@@ -67,9 +67,9 @@ function Section(props) {
                   <h4>Data: {sem.attributes.field_date_info_text}</h4>
                 </div>
                 
-                    <div className="btn-seminar-more">
+                    {/* <div className="btn-seminar-more">
                       Details
-                    </div>
+                    </div> */}
                    
               </div>
               </Link>
