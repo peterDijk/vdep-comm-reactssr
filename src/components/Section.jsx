@@ -54,19 +54,25 @@ function Section(props) {
                 }
               })
               return (
+                <Link key={sem.id} to={`/seminar/${sem.id}`}>
               <div key={ sem.id } className="feature-box">
                 <h3>{sem.attributes.title}</h3>
                 <div className="feature-box__image">
                   {imgSrc.length > 0 &&
                     <img src={`${constants.contentDomain}${imgSrc[0].attributes.uri.url}`} />
-                  }
-                  <Link key={sem.id} to={`/seminar/${sem.attributes.title}/${sem.id}`} className="btn-readmore">
-                    <Button variant="contained" >
-                      Details
-                    </Button>
-                  </Link>                  
+                  }                 
                 </div>
+                <div className="feature-box__info">
+                  <h4>Lokatie: {sem.attributes.field_location}</h4>
+                  <h4>Data: {sem.attributes.field_date_info_text}</h4>
+                </div>
+                
+                    <div className="btn-seminar-more">
+                      Details
+                    </div>
+                   
               </div>
+              </Link>
           )})
           
           }

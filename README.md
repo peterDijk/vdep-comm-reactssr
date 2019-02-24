@@ -3,7 +3,7 @@
 ### Used libraries:
 - react
 - react-router
-- redux-saga
+- redux-thunk
 - react-helmet
 - webpack
 - babel

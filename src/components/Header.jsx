@@ -23,9 +23,9 @@ function Header(props) {
           <span className="heading-primary heading-primary--main">
             { headerNode.attributes.title }
           </span>
-          <span className="heading-primary heading-primary--sub">
+          {/* <span className="heading-primary heading-primary--sub">
             { headerNode.attributes.field_subtitle }
-          </span>
+          </span> */}
         </h1>
       </div>
 
