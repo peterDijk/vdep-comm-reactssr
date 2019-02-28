@@ -14,3 +14,22 @@
   bottom: .5rem;
   
 }
+
+.btn-primary {
+  border: 1px solid $color-primary-dark;
+  border-radius: .5rem;
+  background: transparent;
+  padding: 1.2rem;
+  width: 10rem;
+  height: 5rem;
+  
+  &:hover {
+    background-color: $color-primary-light;
+    color: $color-white;
+    border: 1px solid transparent;
+  }
+  &:focus,
+  &:active {
+    background-color: $color-primary-dark;
+  }
+}

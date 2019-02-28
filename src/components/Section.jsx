@@ -24,9 +24,9 @@ function Section(props) {
         </div>
         { !props.seminars && 
           <Link key={section.id} to={`/more/${section.attributes.field_slug}`} className="btn-readmore">
-            <Button variant="contained" >
+            <button className="btn-primary" variant="contained" >
               Lees meer
-            </Button>
+            </button>
           </Link>
         }
         {/* <Grid container direction="row" justify="center" alignContent="center" spacing={24}>
