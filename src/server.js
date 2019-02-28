@@ -20,7 +20,6 @@ const PORT = process.env.PORT || 33023
 app.use( express.static( path.resolve( __dirname, "../dist" ) ) )
 
 app.get( "/*", async (req, res) => {
-  console.log(req);
   const context = { }
   const store = createStore()
 
