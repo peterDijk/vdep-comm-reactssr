@@ -15,7 +15,7 @@ import App from "./App"
 
 
 const app = express()
-const PORT = process.env.PORT || 33025
+const PORT = process.env.PORT || 33023
 
 app.use( express.static( path.resolve( __dirname, "../dist" ) ) )
 
