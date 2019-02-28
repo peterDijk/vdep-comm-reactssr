@@ -27,6 +27,7 @@ function Section(props) {
             <button className="btn-primary" variant="contained" >
               Lees meer
             </button>
+            {/* test */}
           </Link>
         }
         {/* <Grid container direction="row" justify="center" alignContent="center" spacing={24}>
